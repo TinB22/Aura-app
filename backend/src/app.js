@@ -3,6 +3,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const registrationRoutes = require("./routes/registrationRoutes");
+const materialRoutes = require("./routes/materialRoutes");
 
 const app = express();
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/registrations", registrationRoutes);
+app.use("/api/materials", materialRoutes);
 
 // Test route
 app.get("/", (req, res) => {
