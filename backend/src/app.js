@@ -2,12 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const eventRoutes = require("./routes/eventRoutes");
+const registrationRoutes = require("./routes/registrationRoutes");
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use("/api/registrations", registrationRoutes);
 
 // Test route
 app.get("/", (req, res) => {
