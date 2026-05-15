@@ -7,7 +7,8 @@ const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.post("/:eventId", protect, registerToEvent);
 router.get("/me", protect, getMyRegistrations);
+router.post("/:eventId", protect, registerToEvent);
+
 
 module.exports = router;
