@@ -1,5 +1,4 @@
 const Event = require("../models/Event");
-const Registration = require("../models/Registration");
 
 // @desc Create a new event
 // @route POST /api/events
@@ -77,38 +76,8 @@ const getEventById = async (req, res) => {
   }
 };
 
-// @desc Delete event
-// @route DELETE /api/events/:id
-// @access Private (admin only)
-const deleteEvent = async (req, res) => {
-  try {
-    const event = await Event.findById(req.params.id);
-
-    if (!event) {
-      return res.status(404).json({
-        message: "Event not found",
-      });
-    }
-
-    // Obriši sve prijave povezane s tim događajem
-    await Registration.deleteMany({ event: event._id });
-
-    await Event.findByIdAndDelete(req.params.id);
-
-    res.status(200).json({
-      message: "Događaj i sve povezane prijave su uspješno obrisani",
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Server error while deleting event",
-      error: error.message,
-    });
-  }
-};
-
 module.exports = {
   createEvent,
   getAllEvents,
   getEventById,
-  deleteEvent,
 };

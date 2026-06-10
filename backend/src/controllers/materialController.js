@@ -1,6 +1,6 @@
 const Material = require("../models/Material");
 
-// @desc Get all materials with search
+// @desc Get all materials (with search)
 // @route GET /api/materials
 // @access Public
 const getMaterials = async (req, res) => {
@@ -9,9 +9,7 @@ const getMaterials = async (req, res) => {
 
     const materials = await Material.find({
       title: { $regex: search, $options: "i" },
-    })
-      .populate("uploadedBy", "name email role")
-      .sort({ createdAt: -1 });
+    }).sort({ createdAt: -1 });
 
     res.status(200).json(materials);
   } catch (error) {
@@ -24,7 +22,7 @@ const getMaterials = async (req, res) => {
 
 // @desc Create material
 // @route POST /api/materials
-// @access Private admin
+// @access Private
 const createMaterial = async (req, res) => {
   try {
     const { title, description, category, fileUrl } = req.body;
@@ -55,34 +53,7 @@ const createMaterial = async (req, res) => {
   }
 };
 
-// @desc Delete material
-// @route DELETE /api/materials/:id
-// @access Private admin
-const deleteMaterial = async (req, res) => {
-  try {
-    const material = await Material.findById(req.params.id);
-
-    if (!material) {
-      return res.status(404).json({
-        message: "Material not found",
-      });
-    }
-
-    await Material.findByIdAndDelete(req.params.id);
-
-    res.status(200).json({
-      message: "Materijal je uspješno obrisan",
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Server error while deleting material",
-      error: error.message,
-    });
-  }
-};
-
 module.exports = {
   getMaterials,
   createMaterial,
-  deleteMaterial,
 };

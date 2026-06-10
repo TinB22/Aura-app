@@ -1,14 +1,14 @@
-const authorizeRoles = (...roles) => {
+const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({
-        message: "Not authorized, user not found",
+        message: "Not authorized, no user found",
       });
     }
 
-    if (!roles.includes(req.user.role)) {
+    if (!allowedRoles.includes(req.user.role)) {
       return res.status(403).json({
-        message: "Nemate ovlasti za ovu akciju",
+        message: "Access denied: insufficient permissions",
       });
     }
 
