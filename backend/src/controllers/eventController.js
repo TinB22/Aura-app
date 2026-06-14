@@ -1,4 +1,5 @@
 const Event = require("../models/Event");
+const Registration = require("../models/Registration");
 
 // @desc Create a new event
 // @route POST /api/events
@@ -76,8 +77,37 @@ const getEventById = async (req, res) => {
   }
 };
 
+// exports are defined after all handlers
+
+// @desc Delete event and its registrations
+// @route DELETE /api/events/:id
+// @access Private (admin only)
+const deleteEvent = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    // remove registrations for this event
+    await Registration.deleteMany({ event: eventId });
+
+    await Event.findByIdAndDelete(eventId);
+
+    res.status(200).json({ message: 'Event and related registrations deleted' });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Server error while deleting event',
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   createEvent,
   getAllEvents,
   getEventById,
+  deleteEvent,
 };

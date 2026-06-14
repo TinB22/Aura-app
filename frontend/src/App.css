@@ -12,7 +12,7 @@ body {
 
 /* ── Navbar ─────────────────────────────────────── */
 .navbar {
-  background-color: #1a56db;
+  background-color: #83cf55;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -65,7 +65,7 @@ body {
 
 /* ── Buttons ─────────────────────────────────────── */
 .btn-primary {
-  background-color: #1a56db;
+  background-color: #83cf55;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -78,7 +78,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #1648c0;
+  background-color: #83cf55;
 }
 
 .btn-primary:disabled {
@@ -88,8 +88,8 @@ body {
 
 .btn-secondary {
   background-color: white;
-  color: #1a56db;
-  border: 2px solid #1a56db;
+  color: #83cf55;
+  border: 2px solid #83cf55;
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   cursor: pointer;
@@ -101,7 +101,7 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: #1a56db;
+  background-color: #83cf55;
   color: white;
 }
 
@@ -118,13 +118,13 @@ body {
 
 .btn-logout:hover {
   background-color: white;
-  color: #1a56db;
+  color: #83cf55;
 }
 
 .btn-back {
   background: none;
   border: none;
-  color: #1a56db;
+  color: #83cf55;
   cursor: pointer;
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
@@ -157,7 +157,7 @@ body {
 .auth-card h2 {
   margin-bottom: 1.8rem;
   text-align: center;
-  color: #1a56db;
+  color: #83cf55;
   font-size: 1.6rem;
 }
 
@@ -169,7 +169,7 @@ body {
 }
 
 .auth-link a {
-  color: #1a56db;
+  color: #83cf55;
   text-decoration: none;
   font-weight: 500;
 }
@@ -203,7 +203,7 @@ body {
 
 .form-group input:focus {
   outline: none;
-  border-color: #1a56db;
+  border-color: #83cf55;
   box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
 }
 
@@ -360,7 +360,7 @@ body {
 
 .search-bar input:focus {
   outline: none;
-  border-color: #1a56db;
+  border-color: #83cf55;
   box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
 }
 
@@ -421,7 +421,7 @@ body {
 .material-category {
   display: inline-block;
   background-color: #e0e7ff;
-  color: #1a56db;
+  color: #83cf55;
   padding: 0.2rem 0.7rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -496,20 +496,20 @@ body {
 }
 
 .primary-btn {
-  background: #2563eb;
+  background: #83cf55;
   color: white;
-  border: 2px solid #2563eb;
+  border: 2px solid #83cf55;
 }
 
 .primary-btn:hover {
-  background: #1d4ed8;
+  background: #489f12;
   transform: translateY(-2px);
 }
 
 .secondary-btn {
   background: white;
-  color: #2563eb;
-  border: 2px solid #2563eb;
+  color: #83cf55;
+  border: 2px solid #83cf55;
 }
 
 .secondary-btn:hover {
@@ -573,20 +573,20 @@ body {
 }
 
 .primary-btn {
-  background: #2563eb;
+  background: #83cf55;
   color: white;
-  border: 2px solid #2563eb;
+  border: 2px solid #83cf55;
 }
 
 .primary-btn:hover {
-  background: #1d4ed8;
+  background: #83cf55;
   transform: translateY(-2px);
 }
 
 .secondary-btn {
   background: white;
-  color: #2563eb;
-  border: 2px solid #2563eb;
+  color: #63df15cf;
+  border: 2px solid #63df15cf;
 }
 
 .secondary-btn:hover {
@@ -637,7 +637,7 @@ body {
 }
 
 .admin-hero {
-  background: linear-gradient(135deg, #1a56db, #0f2f75);
+  background: linear-gradient(135deg, #83cf55, #3b7119);
   color: white;
   border-radius: 22px;
   padding: 2.5rem;
@@ -711,7 +711,7 @@ body {
 
 .admin-section-header span {
   background: #e0e7ff;
-  color: #1a56db;
+  color: #83cf55;
   border-radius: 999px;
   padding: 0.35rem 0.75rem;
   font-size: 0.85rem;

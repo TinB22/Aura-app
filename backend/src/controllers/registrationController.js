@@ -62,7 +62,77 @@ const getMyRegistrations = async (req, res) => {
   }
 };
 
+// @desc Unregister current user from an event
+// @route DELETE /api/registrations/:eventId
+// @access Private
+const unregisterFromEvent = async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+    const userId = req.user._id;
+
+    const registration = await Registration.findOneAndDelete({
+      user: userId,
+      event: eventId,
+    });
+
+    if (!registration) {
+      return res.status(404).json({ message: 'Registration not found' });
+    }
+
+    res.status(200).json({ message: 'Successfully unregistered from event' });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Server error while unregistering',
+      error: error.message,
+    });
+  }
+};
+
+// @desc Get registrations for a specific event (admin)
+// @route GET /api/registrations/event/:eventId
+// @access Private (admin)
+const getRegistrationsByEvent = async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+
+    const registrations = await Registration.find({ event: eventId })
+      .populate('user', 'name email role')
+      .sort({ createdAt: -1 });
+
+    res.status(200).json(registrations);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Server error while fetching event registrations',
+      error: error.message,
+    });
+  }
+};
+
+// @desc Admin remove a registration by id
+// @route DELETE /api/registrations/admin/:registrationId
+// @access Private (admin)
+const adminRemoveRegistration = async (req, res) => {
+  try {
+    const regId = req.params.registrationId;
+
+    const registration = await Registration.findByIdAndDelete(regId);
+    if (!registration) {
+      return res.status(404).json({ message: 'Registration not found' });
+    }
+
+    res.status(200).json({ message: 'Registration removed' });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Server error while removing registration',
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   registerToEvent,
   getMyRegistrations,
+  getRegistrationsByEvent,
+  unregisterFromEvent,
+  adminRemoveRegistration,
 };

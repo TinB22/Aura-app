@@ -53,7 +53,30 @@ const createMaterial = async (req, res) => {
   }
 };
 
+// @desc Delete a material
+// @route DELETE /api/materials/:id
+// @access Private (admin only)
+const deleteMaterial = async (req, res) => {
+  try {
+    const material = await Material.findById(req.params.id);
+
+    if (!material) {
+      return res.status(404).json({ message: 'Material not found' });
+    }
+
+    await Material.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({ message: 'Material deleted successfully' });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Server error while deleting material',
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   getMaterials,
   createMaterial,
+  deleteMaterial,
 };
