@@ -1,25 +1,22 @@
-Run the whole app (backend + frontend)
+Pokretanje cijele app (backend + frontend)
 
-1) From repo root, install dependencies for both:
+1) U backend direktoriju napravite novu datoteku i nazovite ju ".env", u nju zalijepite:
 
-```bash
+"PORT=5000
+MONGODB_URI=mongodb+srv://bornahrubi:ProgInjzBaza@cluster0.zlggw6c.mongodb.net/
+JWT_SECRET=marko_je_smislio_kljuc"
+
+2) U terminalu u glavnom direktoriju "Aura-app-main" pokrenite:
+
 npm run install-all
-```
 
-2) Install `concurrently` at root (if not already installed by package managers):
 
-```bash
+3) Zatim u istom tom terminalu:
+
 npm install
-```
-```
 
-3) Start both dev servers with a single command:
 
-```bash
+4) I tada naredba koja pokreće i backend i frontend (isto iz glavnog direktorija u terminalu):
+
 npm run dev
-```
 
-Notes:
-- `dev` runs `npm run dev` in `backend` and `frontend` folders (uses `--prefix`).
-- For production start, use `npm run start` (this runs `npm start` in both subfolders).
-- Make sure environment variables (e.g., MongoDB connection string) are set for backend before starting.
